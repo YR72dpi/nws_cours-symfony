@@ -10,7 +10,7 @@
 - [Models](models.md)
 - [Migration](migration.md)
 - [Repositories](repositories.md)
-- [Pratique](pratique.md)
+- [Pratiques](Pratiques.md)
 
 </details>
 
