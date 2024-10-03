@@ -10,7 +10,7 @@
 - [Models](models.md)
 - [Migration](migration.md)
 - [Repositories](repositories.md)
-- [Pratiques](Pratiques.md)
+- [Pratiques](pratiques.md)
 
 </details>
 
@@ -62,5 +62,4 @@ graph LR
     C -->|4 - Recupère la view | V{View}
     V -->|5 - Modifie la view | C
     C -->|6 - Renvoie au client | client
-
 ```
