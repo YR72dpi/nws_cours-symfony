@@ -14,19 +14,19 @@
 
 </details>
 
-# Symfony 
+# Symfony
 <center>
    <img src="https://kiboko.fr/wp-content/uploads/2021/06/symfony_black_01.png"/>
 </center>
 
 ## Qu'est-ce que Symfony ?
 
-- Framework PHP open source 
-- MVC (Modèle-Vue-Contrôleur)
-- Francais 🐓 
-- Version actuel 7.1
+- 🐘 Framework PHP open source
+- 🏢 MVC (Modèle-Vue-Contrôleur)
+- 🐓 Francais  
+- 🆚 Version actuel 7.1
 
-## Lexique 
+## Lexique 📖
 
 ### Framework
 ```
