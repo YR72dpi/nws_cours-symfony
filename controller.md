@@ -16,6 +16,8 @@
 
 # Controller ⚙
 
+Les controllers se trouve dans ```.src/Controller/```. Le nom des controllers doivent se terminer par "_Controller_". Exemple : "_ArticleController.php_"
+
 ## La base
 
 ```php
