@@ -35,3 +35,5 @@ cd le_nom_de_ton_projet
 # Créer une surcouche pour ajouter le "front" 
 composer require webapp
 ```
+
+Puis lancer son serveur avec ```php -S localhost:8080 -t ./public```

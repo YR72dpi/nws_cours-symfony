@@ -57,6 +57,6 @@ class Conference
 }
 ```
 
-Suivez ensuite les instructions en focntion de ce que vous voulez créer.
+Suivez ensuite les instructions en fonction de ce que vous voulez créer. [Voir +](https://symfony.com/doc/current/the-fast-track/en/8-doctrine.html#creating-entity-classes)
 
-[Voir +](https://symfony.com/doc/current/the-fast-track/en/8-doctrine.html#creating-entity-classes)
+Vous pouvez ensuite faire la commande ```php bin/console make:crud``` pour créer un CRUD complet qu'il vous restera à styliser. 
