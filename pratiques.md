@@ -6,6 +6,7 @@
 - [Getting Started](getting-started.md)
 - [Console](console.md)
 - [Controller](controller.md)
+- [Formulaire](form.md)
 - [Doctrine](doctrine.md)
 - [Models](models.md)
 - [Migration](migration.md)
