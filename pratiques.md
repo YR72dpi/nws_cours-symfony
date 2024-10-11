@@ -89,3 +89,90 @@ Pensez à mettre un maximum de contexte dans le log : route name, id du compte, 
 [Voir plus](https://symfony.com/doc/current/logging.html#using-a-logger-inside-a-service)
 
 ## Cache
+
+Il y a deux types de cache. Celui [côté client](https://symfony.com/doc/current/http_cache.html) et [côté serveur](https://symfony.com/doc/current/cache.html).
+
+Coté serveur il y a deux manière de gérer la duré de vie du cache :
+
+### Cache Serveur
+
+#### Cache par tag
+
+Avec ```TagAwareCacheInterface;``` vous pourrez gérer le cache à partie d'un tag. C'est-à-dire que le cache est lié à un tag qui devras être invalidé dès que sont contenu pourrait être modifié.
+
+Imaginons que vous mettez en cache les données retourné par un "_findAll_" particulièrement lourd. Ces données sont lié à un tag _x_. Dès lors que vous rajoutez/supprimez/modifiez quelque choses de ce repository, dans un crud par exemple, vous devez invalider le tag.
+
+[Voir plus sur le cache par tag](https://symfony.com/doc/current/cache.html#using-cache-tags)
+
+#### Cache par temps
+
+Il y a aussi le cache par temps. Les données retournées sont enregistrer _x_ secondes avec d'être automatiquement invalidé, récupéré et remis en cache.
+
+```php
+    // Route de votre controller
+
+    public function cachedAction(
+        AdapterInterface $cachePool,
+        TrucRepository $trucRepository
+    ): Response
+    {
+        $cachedTrucList = $cachePool->get(
+            'my_cache_key', 
+            function (ItemInterface $item) use ($trucRepository): string {
+                $item->expiresAfter(3600); // Cache expire après 1 heure (3600 secondes)
+
+                $computedValue = $trucRepository->findAll();
+
+                // C'est le contenu de cette variable retourné à 
+                // la fonction de callBack qui sera mis en cache
+                return $computedValue;
+            }
+        );
+
+        return $this->render("template.html.twig", [
+            "cachedTrucList" => $cachedTrucList
+        ]);
+    }
+
+
+```
+
+### Cache Client
+
+Cache temporel demandé dans le head de la réponse.
+
+```php
+
+  // Route de votre controller
+
+    public function cachedAction(
+        AdapterInterface $cachePool,
+        TrucRepository $trucRepository
+    ): Response
+    {
+        $cachedTrucList = $cachePool->get(
+            'my_cache_key', 
+            function (ItemInterface $item) use ($trucRepository): string {
+                $item->expiresAfter(3600); // Cache expire après 1 heure (3600 secondes)
+
+                $computedValue = $trucRepository->findAll();
+
+                // C'est le contenu de cette variable retourné à 
+                // la fonction de callBack qui sera mis en cache
+                return $computedValue;
+            }
+        );
+
+        $response = $this->render("template.html.twig", [
+            "cachedTrucList" => $cachedTrucList
+        ]);
+
+        $response->setPublic()->setMaxAge(3600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+
+        return $response;
+    }
+
+```
+
+[Voir plus sur le cache par temps](https://symfony.com/doc/current/cache.html)
